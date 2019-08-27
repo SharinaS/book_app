@@ -22,10 +22,12 @@ app.post('/book-search', searchForBook);
 
 
 function Book(obj){
+  let url = ('imageLinks' in obj.volumeInfo ? obj.volumeInfo.imageLinks.thumbnail : 'https://www.placecage.com/640/360');
+  url = (url[4] === 's' ? url : url = url.replace('http', 'https'));
   this.title = obj.volumeInfo.title;
   this.author = ('authors' in obj.volumeInfo ? obj.volumeInfo.authors[0] : 'No authors available');
   this.description = ('description' in obj.volumeInfo ? obj.volumeInfo.description : 'No description available');
-  this.image = ('imageLinks' in obj.volumeInfo ? obj.volumeInfo.imageLinks.thumbnail : 'https://www.placecage.com/640/360');
+  this.image = ('imageLinks' in obj.volumeInfo ? url : 'https://www.placecage.com/640/360');
   this.isbn = ('industryIdentifiers' in obj.volumeInfo ? obj.volumeInfo.industryIdentifiers[0].identifier : 'No ISBN available');
 } 
 
@@ -62,7 +64,9 @@ function searchForBook(request, response) {
       console.log(objecty);
       console.log(new Book(objecty));
     });
+
     response.send(result.body);
+
     response.render('pages/booklist')
   }).catch(error => {
     response.status(500).send(error.message);
