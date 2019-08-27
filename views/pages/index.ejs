@@ -12,6 +12,25 @@
     <link rel="stylesheet" href="styles/icons.css">
 </head>
 <body>
-    <h1>Hello world</h1> 
+    <h1>Book Search</h1> 
+
+    <form action="book-search" method="POST">
+        <fieldset>
+            <legend>Search by Title or Author</legend>
+            <label for="search">
+                <span>Title</span>
+                <input type="radio" name="search" value="title">
+            </label>
+
+            <label for="search">
+                <span>Author</span>
+                <input type="radio" name="search" value="author">
+            </label>
+
+            <label for="search">
+                <input type="text" name="search" placeholder="insert book name or author">
+            </label>
+        </fieldset>
+    </form>
 </body>
 </html>

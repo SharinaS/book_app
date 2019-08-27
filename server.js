@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-//const superagent = require('superagent');
+const superagent = require('superagent');
 
 const app = express();
 
@@ -13,42 +13,42 @@ app.use(express.static('./public'));
 require('dotenv').config();
 const PORT = process.env.PORT;
 
-app.get('/', proofOfLife);
-
-// app.post('/book-search', searchForBook);
+app.get('/', landingPage);
+app.post('/book-search', searchForBook);
 
 
 
 // // Route Handlers
 
-function proofOfLife (request, response) {
+function landingPage (request, response) {
   response.render('pages/index');
 }
 
-// function searchForBook(request, response) {
-//   // request.body comes from the form from ejs
-//   // .search is the name of the input
-//   // [0] is the first thing which was the radio buttons
-//   // console.log(request.body.search[0]);
-//   const searchType = request.body.search[0];
+function searchForBook(request, response) {
+  // request.body comes from the form from ejs
+  // .search is the name of the input
+  // [0] is the first thing which was the radio buttons
+  // console.log(request.body.search[0]);
 
-//   const searchingFor = request.body.search[1];
+  const searchType = request.body.search[0];
 
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-//   if (searchType === 'title'){
-//     const query = `+intitle:${searchingFor}`;
-//     url = url + query;
-//   } else 
-//     const query = `+inauthor:${searchingFor}`;
-//     url = url + query;
-//   }
+  const searchingFor = request.body.search[1];
 
-//   superagent.get(url).then(result => {
-//     // console.log(result.body);
-//     response.send(result .body);
-//     // response.render('pages/booklist')
-//   });
-// }
+  let url = 'https://www.googleapis.com/books/v1/volumes?q=';
+  if (searchType === 'title'){
+    const query = `+intitle:${searchingFor}`;
+    url = url + query;
+  } else {
+    const query = `+inauthor:${searchingFor}`;
+    url = url + query;
+  }
+
+  superagent.get(url).then(result => {
+    console.log(result.body);
+    response.send(result .body);
+    response.render('pages/booklist')
+  });
+}
 
 
 
