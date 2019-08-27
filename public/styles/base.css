@@ -1,3 +1,13 @@
+section {
+    display: flex;
+}
+
+#title{
+    font-size: 2em;
+}
+
+
+
 h1 {
     color: blue;
 }
