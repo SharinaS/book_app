@@ -17,10 +17,7 @@ app.get('/', landingPage);
 app.post('/searches', searchForBook);
 
 
-// Constructor Function
-// image, title, author, description, isbn number
-
-
+//======== Constructor Function ========
 function Book(obj){
   let url = ('imageLinks' in obj.volumeInfo ? obj.volumeInfo.imageLinks.thumbnail : 'https://www.placecage.com/640/360');
   url = (url[4] === 's' ? url : url = url.replace('http', 'https'));
@@ -45,7 +42,6 @@ function searchForBook(request, response) {
   // console.log(request.body.search[0]);
 
   const searchType = request.body.search[0];
-
   const searchingFor = request.body.search[1];
 
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
@@ -57,6 +53,7 @@ function searchForBook(request, response) {
     url = url + query;
   }
 
+  // Make array of books
   let arr = [];
   superagent.get(url).then(result => {
     //console.log(result.body);
@@ -66,19 +63,33 @@ function searchForBook(request, response) {
       arr.push(new Book(objecty));
     });
     console.log(arr);
-    //response.send(arr);
 
+    // Send the raw data:
+    //response.send(arr);  
+
+    // send (the file) and render make HTML render on the page:
     response.render('pages/searches/show', {data: arr});
     
   }).catch(error => {
     response.status(500).send(error.message);
+    response.render('pages/error')
     console.log(error);
   });
 }
 
 
-
-
-
-
 app.listen(PORT, () => console.log(`up on PORT ${PORT}`));
+
+
+/* NOTES:
+get - asking for a file? which file. Used just for getting things.
+post - used for sending things to the server, with the intention of storage
+render - takes an ejs file and renders it on the page
+response - is an object that is collecting all the data. Can use the operations send or render to work on that object. 
+response.render always takes in an object as the second argument. 
+Form talks to book-search. Post book-search occurs, which calls the callback function searchForBook. We then make a query for google, and make a superagent request. Front end is still waiting for something to happen. Then, response.render occurs, and we show our global key to the front end.
+short circuit operators like && and || - they stop evaluating further ands and stops at the first falsey thing it finds. Same with 0. It returns the last value, and not true, because the value is truthy or falsey. 
+
+line 71 can accept multiple key value pairs. 
+
+*/

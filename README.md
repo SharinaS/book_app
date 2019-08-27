@@ -28,6 +28,12 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 10:30am
 
-Finish time:
+Finish time: Unfinished
 
 Actual time needed to complete:
+
+## If you copy the code down to your machine from my repo on GitHub, after cloning, simply:
+1. Do a touch .env to create a file
+2. Within that .env file add PORT:
+* PORT=port_number
+3. type npm install (to install all packages needed).
