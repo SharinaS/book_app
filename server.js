@@ -14,7 +14,7 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 app.get('/', landingPage);
-app.post('/book-search', searchForBook);
+app.post('/searches', searchForBook);
 
 
 // Constructor Function
@@ -57,17 +57,19 @@ function searchForBook(request, response) {
     url = url + query;
   }
 
+  let arr = [];
   superagent.get(url).then(result => {
     //console.log(result.body);
     result.body.items.forEach( objecty => {
       console.log('**********************************');
-      console.log(objecty);
-      console.log(new Book(objecty));
+      //console.log(objecty);
+      arr.push(new Book(objecty));
     });
+    console.log(arr);
+    //response.send(arr);
 
-    response.send(result.body);
-
-    response.render('pages/booklist')
+    response.render('pages/searches/show', {data: arr});
+    
   }).catch(error => {
     response.status(500).send(error.message);
     console.log(error);
