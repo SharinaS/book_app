@@ -1,6 +1,18 @@
 # book_app
 The most amazingess bookapp ever that, drumroll please, fullstack.
 
+## Database
+The schema for the database is as follows;
+CREATE TABLE books(
+  id SERIAL PRIMARY KEY,
+  author VARCHAR(255),
+  title VARCHAR(255),
+  ISBN VARCHAR(255),
+  image VARCHAR,
+  description VARCHAR(260),
+  bookshelf VARCHAR(255)
+);
+
 ## Times
 ### Number and name of feature: feature 1, early deployment
 
