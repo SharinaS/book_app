@@ -13,15 +13,16 @@
 </head>
 <body>
   <h1>Search Results</h1>
-  <section>
     <ul>
-      <!-- <li><%= data[0].title %></li> -->
-      <% for(var i = 0; i < data.length; i++) { %>
-        <li id="title"><%= data[i].title %> by <%= data[i].author %></li>
-        <li id="description"><%= data[i].description %></li>
-      <% } %>
+      <section id="books">
+        <!-- <li><%= data[0].title %></li> -->
+        <% for(var i = 0; i < data.length; i++) { %>
+          <!-- <img src="" alt="" /> -->
+          <li id="title"><%= data[i].title %> by <%= data[i].author %></li>
+          <li id="description"><%= data[i].description %></li>
+        <% } %>
+      </section>
     </ul>
-  </section>
   
 </body>
 </html>

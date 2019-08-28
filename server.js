@@ -72,7 +72,7 @@ function searchForBook(request, response) {
     
   }).catch(error => {
     response.status(500).send(error.message);
-    response.render('pages/error')
+    response.render('pages/error', {error: 'Sorry, there was an error'});
     console.log(error);
   });
 }
