@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <link rel="stylesheet" href="styles/icons.css">
-  <title>Document</title>
+  <title>Search Results</title>
 </head>
 <body>
   <h1>Search Results</h1>
-    <ul>
-      <section id="books">
+  <section id="books">
+      <ul>
         <!-- <li><%= data[0].title %></li> -->
         <% for(var i = 0; i < data.length; i++) { %>
-          <!-- <img src="" alt="" /> -->
-          <li id="title"><%= data[i].title %> by <%= data[i].author %></li>
+          <img src= <%= data[i].image %> />
+          <li id="title"><%= data[i].title %></li>
+          <li id="author">by <%= data[i].author %></li>
           <li id="description"><%= data[i].description %></li>
         <% } %>
-      </section>
-    </ul>
+      </ul>
+    </section>
   
 </body>
 </html>
