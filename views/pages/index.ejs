@@ -14,19 +14,24 @@
 <body>
     <h1>Book Search</h1> 
 
+    <!-- FORM -->
     <form action="searches" method="POST">
         <fieldset>
             <legend>Search by Title or Author</legend>
+
+            <!-- TITLE -->
             <label for="search">
                 <span>Title</span>
                 <input type="radio" name="search" value="title">
             </label>
 
+            <!-- AUTHOR -->
             <label for="search">
                 <span>Author</span>
                 <input type="radio" name="search" value="author">
             </label>
 
+            <!-- SEARCH BOX -->
             <label for="search">
                 <input type="text" name="search" placeholder="insert book name or author">
             </label>

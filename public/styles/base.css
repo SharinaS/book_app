@@ -1,13 +1,20 @@
-section {
+body {
+    width: 960px;
+    margin: auto;
+  }
+
+#books {
+    background-color: antiquewhite;
+    text-align: center;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row; 
+    border: 1px groove black;
 }
 
-#title{
-    font-size: 2em;
+#books > * {
+    box-sizing: border-box;
+    width: 200px; 
 }
 
-
-
-h1 {
-    color: blue;
-}
