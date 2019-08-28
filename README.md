@@ -70,9 +70,19 @@ Estimate of time needed to complete: 1.5 hour
 
 Start time: 10:00am
 
+Finish time: 11:40am
+
+Actual time needed to complete: 1hour 40minutes
+
+### Number and name of feature: feature 2 day 2, Details of a single book.
+
+Estimate of time needed to complete: 
+
+Start time: 11:40am
+
 Finish time: 
 
-Actual time needed to complete: 45 minutes
+Actual time needed to complete: 
 
 ## If you copy the code down to your machine from my repo on GitHub, after cloning, simply:
 1. Do a touch .env to create a file

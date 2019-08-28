@@ -2,6 +2,7 @@
 
 const express = require('express');
 const superagent = require('superagent');
+const pg = require('pg');
 
 const app = express();
 
@@ -13,9 +14,17 @@ app.use(express.static('./public'));
 require('dotenv').config();
 const PORT = process.env.PORT;
 
+//Setting up postgres clinet
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+// setup error logging
+client.on('error', (error) => console.error(error));
+
 //API Routes
 app.get('/', landingPage);
 app.post('/searches', searchForBook);
+app.get('/search', newSearch);
+app.get('/books/:id', detailView);
 app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
 
 
@@ -36,7 +45,23 @@ function Book(obj){
 // Route Handlers
 
 function landingPage (request, response) {
-  response.render('pages/index');
+  const sqlQuery = `SELECT * FROM books;`
+  client.query(sqlQuery).then(sqlResult => {
+    response.render('pages/index', {stuffFromDB: sqlResult.rows});
+  }).catch(handleError);
+}
+
+function newSearch (request, response) {
+  response.render('pages/searches/new');
+}
+
+function detailView (request, response) {
+  //Dumpster Fire
+  console.log(request.params.id)
+  client.query('SELECT * FROM books WHERE id = $1', [request.params.id]).then(sqlDetailResult => {
+    console.log(sqlDetailResult.rows[0]);
+    response.render('pages/books/detail', sqlDetailResult.rows[0])
+  })
 }
 
 function searchForBook(request, response) {
@@ -81,6 +106,10 @@ function searchForBook(request, response) {
   });
 }
 
+function handleError(error, response){
+  response.render('pages/error', {error: 'Sorry, there was an error'});
+  console.log(error);
+}
 
 app.listen(PORT, () => console.log(`up on PORT ${PORT}`));
 

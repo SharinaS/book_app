@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/modules.css">
-  <link rel="stylesheet" href="styles/icons.css">
-  <title>Search Results</title>
-</head>
+<%- include('../../layout/head') %>
 <body>
+  <%- include('../../layout/header') %>
   <h1>Search Results</h1>
   <section id="books">
-      <ul>
-        <!-- <li><%= data[0].title %></li> -->
-        <% for(var i = 0; i < data.length; i++) { %>
-          <img src= <%= data[i].image %> />
-          <li id="title"><%= data[i].title %></li>
-          <li id="author">by <%= data[i].author %></li>
-          <li id="description"><%= data[i].description %></li>
-        <% } %>
-      </ul>
-    </section>
-  
+    <ul>
+      <% for(var i = 0; i < data.length; i++) { %>
+        <img src= <%= data[i].image %> />
+        <li id="title"><%= data[i].title %></li>
+        <li id="author">by <%= data[i].author %></li>
+        <li id="description"><%= data[i].description %></li>
+        <p id= "clickMe">Select This Book</p>
+      <% } %>
+    </ul>
+  </section>
+  <script src="../../../public/js/app.js" ></script>
 </body>
 </html>
