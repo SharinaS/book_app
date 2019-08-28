@@ -13,6 +13,8 @@ app.use(express.static('./public'));
 require('dotenv').config();
 const PORT = process.env.PORT;
 
+//API Routes
+app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
 app.get('/', landingPage);
 app.post('/searches', searchForBook);
 
@@ -71,7 +73,7 @@ function searchForBook(request, response) {
     response.render('pages/searches/show', {data: arr});
     
   }).catch(error => {
-    response.status(500).send(error.message);
+    // response.status(500);
     response.render('pages/error', {error: 'Sorry, there was an error'});
     console.log(error);
   });
