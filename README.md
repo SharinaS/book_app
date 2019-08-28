@@ -28,9 +28,39 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 10:30am
 
-Finish time: Unfinished
+Finish time: 1:00pm
 
-Actual time needed to complete:
+Actual time needed to complete: 3 hours
+
+### Number and name of feature: feature 4, Making Error Page
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 9:00am
+
+Finish time: 9:15am
+
+Actual time needed to complete: 15 minutes
+
+### Number and name of feature: feature 5, CSS Styling
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 9:15am
+
+Finish time: 10:00am
+
+Actual time needed to complete: 45 minutes
+
+### Number and name of feature: feature 1 day 2, Setting up database, and rendering on front page
+
+Estimate of time needed to complete: 1.5 hour
+
+Start time: 10:00am
+
+Finish time: 
+
+Actual time needed to complete: 45 minutes
 
 ## If you copy the code down to your machine from my repo on GitHub, after cloning, simply:
 1. Do a touch .env to create a file

@@ -14,9 +14,9 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 //API Routes
-app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
 app.get('/', landingPage);
 app.post('/searches', searchForBook);
+app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
 
 
 //======== Constructor Function ========
@@ -26,6 +26,8 @@ function Book(obj){
   this.title = obj.volumeInfo.title;
   this.author = ('authors' in obj.volumeInfo ? obj.volumeInfo.authors[0] : 'No authors available');
   this.description = ('description' in obj.volumeInfo ? obj.volumeInfo.description : 'No description available');
+  //Limiting the description to 250 chars
+  if(this.description.length > 254) this.description = this.description.slice(0,250)+'...';
   this.image = ('imageLinks' in obj.volumeInfo ? url : 'https://www.placecage.com/640/360');
   this.isbn = ('industryIdentifiers' in obj.volumeInfo ? obj.volumeInfo.industryIdentifiers[0].identifier : 'No ISBN available');
 } 

@@ -1,0 +1,43 @@
+
+#books > * {
+  box-sizing: border-box;
+  width: 200px; 
+}
+img{
+  padding-top: 50px;
+}
+@media all and (min-width: 400px) {
+  body {
+    width: 390px;
+    margin: auto;
+  }
+
+  #books > * {
+    box-sizing: border-box;
+    width: 350px; 
+  }
+}
+
+@media all and (min-width: 600px) {
+  body {
+    width: 590px;
+    margin: auto;
+  }
+
+  #books > * {
+    box-sizing: border-box;
+    width: 550px; 
+  }
+}
+
+@media all and (min-width: 959px) {
+  body {
+    width: 960px;
+    margin: auto;
+  }
+
+  #books > * {
+    box-sizing: border-box;
+    width: 700px; 
+  }
+}
