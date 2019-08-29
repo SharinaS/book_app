@@ -5,7 +5,7 @@ CREATE TABLE books(
   title VARCHAR(255),
   ISBN VARCHAR(255),
   image VARCHAR,
-  description VARCHAR(260),
+  description TEXT,
   bookshelf VARCHAR(255)
 );
 
