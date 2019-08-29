@@ -5,30 +5,40 @@
   
   <form action="/edit/<%=id%>" method="POST" id="edit">
     <input type="hidden" name="_method" value="PUT">
-    <button>Update</button>
-
+  
       <fieldset>
         <legend>Edit Book</legend>
           <!-- Populated Title -->
-          <span>Title</span>
-          <input type="text" name="editTitle" value="<%= title %>">
+          <div class="inputForms">
+            <span>Title</span>
+            <input type="text" name="editTitle" value="<%= title %>">
+          </div>
 
           <!-- Populated Author -->
-          <span>Author</span>
-          <input type="text" name="editAuthor" value="<%= author %>">
+          <div class="inputForms">
+            <span>Author</span>
+            <input type="text" name="editAuthor" value="<%= author %>">
+          </div>
 
           <!-- Populated ISBN -->
-          <span>ISBN</span>
-          <input type="text" name="editIsbn" value="<%= isbn %>">
+          <div class="inputForms">
+            <span>ISBN</span>
+            <input type="text" name="editIsbn" value="<%= isbn %>">
+          </div>
 
           <!-- Populated Image -->
-          <span>Image</span>
-          <input type="text" name="editImage" value="<%= image %>">
+          <div class="inputForms">
+            <span>Image</span>
+            <input type="text" name="editImage" value="<%= image %>">
+          </div>
 
-          <span>Description</span>
-          <textarea rows="4" cols="50" name="editDescription" form="edit">
-              "<%= description %>"
-          </textarea>
+          <div class="inputForms">
+            <span>Description</span>
+            <textarea rows="4" cols="50" name="editDescription" form="edit">
+                "<%= description %>"
+            </textarea>
+          </div>
+        <button>Update</button>
       </fieldset>
   </form>
 </body>
