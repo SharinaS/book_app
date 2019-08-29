@@ -10,6 +10,16 @@
         <li id="author">by <%= data[i].author %></li>
         <li id="description"><%= data[i].description %></li>
         <p id= "clickMe">Select This Book</p>
+        <form action ="/books/save" method="post">
+          <input type="hidden" value= "<%= data[i].title%>" name="title">
+          <input type="hidden" value= "<%= data[i].author%>" name="author">
+          <input type="hidden" value= "<%= data[i].description%>" name="description">
+          <input type="hidden" value= "<%= data[i].image%>" name="image">
+          <input type="hidden" value= "<%= data[i].isbn%>" name="isbn">
+          <input type="text" name="category" required> category
+          
+          <button>Save</button>
+        </form>
       <% } %>
     </ul>
   </section>
