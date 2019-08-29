@@ -36,6 +36,10 @@
                 <li id="author">by <%= stuffFromDB[i].author %></li>
                 <li id="description"><%= stuffFromDB[i].description %></li>
             </a>
+                <form action="/books/<%= stuffFromDB[i].id %>" method = "POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button>Delete Me</button>
+                </form>
             <% } %>
         </ul>
     </section>
