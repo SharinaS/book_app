@@ -2,31 +2,33 @@
 
 <body>
   <%- include('../../layout/header') %>
+  
+  <form action="/edit/<%=id%>" method="POST" id="edit">
+    <input type="hidden" name="_method" value="PUT">
+    <button>Update</button>
 
-  <form action="searches" method="POST" id="edit">
       <fieldset>
         <legend>Edit Book</legend>
           <!-- Populated Title -->
           <span>Title</span>
-          <input type="text" name="search" placeholder="<%= title %>">
+          <input type="text" name="editTitle" value="<%= title %>">
 
           <!-- Populated Author -->
           <span>Author</span>
-          <input type="text" name="search" placeholder="<%= author %>">
+          <input type="text" name="editAuthor" value="<%= author %>">
 
           <!-- Populated ISBN -->
           <span>ISBN</span>
-          <input type="text" name="search" placeholder="<%= isbn %>">
+          <input type="text" name="editIsbn" value="<%= isbn %>">
 
           <!-- Populated Image -->
           <span>Image</span>
-          <input type="text" name="search" placeholder="<%= image %>">
+          <input type="text" name="editImage" value="<%= image %>">
 
           <span>Description</span>
-          <textarea rows="4" cols="50" name="comment" form="edit">
+          <textarea rows="4" cols="50" name="editDescription" form="edit">
               "<%= description %>"
           </textarea>
-
       </fieldset>
   </form>
 </body>

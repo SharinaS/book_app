@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 require('dotenv').config();
 const PORT = process.env.PORT;
+
 app.use(methodOverride((request, response) => {
   if(request.body && typeof request.body === 'object' && '_method' in request.body){
     let method = request.body._method;
@@ -36,8 +37,9 @@ app.get('/books/:id', detailView);
 app.get('/edit/:id', editBook);
 app.post('/books/save', saveBook);
 app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
-
 app.delete('/books/:id', deleteBook);
+
+app.put('/edit/:id', updateBook);
 
 //======== Constructor Function ========
 function Book(obj){
@@ -62,7 +64,20 @@ function deleteBook(req, res){
   client.query('DELETE FROM books WHERE id=$1', [id]).then(() => {
     res.redirect('/');
   })
+}
 
+function updateBook (request, response) {
+  const id = request.params.id;
+  const title = request.body.editTitle;
+  const author = request.body.editAuthor;
+  const isbn = request.body.editIsbn;
+  const description = request.body.editDescription;
+  const image = request.body.editImage;
+
+  const sqlUpdate = 'update books set title=$2, author=$3, description=$4, bookshelf=$5, ISBN=$6, image=$7 where id=$1;'
+  client.query(sqlUpdate, [id, title, author, description, 'novel', isbn, image]).then(() => {
+    response.redirect('/');
+  })
 }
 
 function landingPage (request, response) {
@@ -106,13 +121,10 @@ function searchForBook(request, response) {
     const query = `+inauthor:${searchingFor}`;
     url = url + query;
   }
-
   // Make array of books
   let arr = [];
   superagent.get(url).then(result => {
-
     result.body.items.forEach( objecty => {
-
       arr.push(new Book(objecty));
     });  
     // send (the file) and render make HTML render on the page:
