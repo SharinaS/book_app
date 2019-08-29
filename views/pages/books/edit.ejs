@@ -1,0 +1,33 @@
+<%- include('../../layout/head', {urlPrefix: "../"}) %>
+
+<body>
+  <%- include('../../layout/header') %>
+
+  <form action="searches" method="POST" id="edit">
+      <fieldset>
+        <legend>Edit Book</legend>
+          <!-- Populated Title -->
+          <span>Title</span>
+          <input type="text" name="search" placeholder="<%= title %>">
+
+          <!-- Populated Author -->
+          <span>Author</span>
+          <input type="text" name="search" placeholder="<%= author %>">
+
+          <!-- Populated ISBN -->
+          <span>ISBN</span>
+          <input type="text" name="search" placeholder="<%= isbn %>">
+
+          <!-- Populated Image -->
+          <span>Image</span>
+          <input type="text" name="search" placeholder="<%= image %>">
+
+          <span>Description</span>
+          <textarea rows="4" cols="50" name="comment" form="edit">
+              "<%= description %>"
+          </textarea>
+
+      </fieldset>
+  </form>
+</body>
+</html>

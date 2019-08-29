@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Amazingest Book App Ever</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css">
-    <link rel="stylesheet" href="styles/icons.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-</head>
+<%- include('../../layout/head', {urlPrefix: "../"}) %>
 
 <body>
   <%- include('../../layout/header') %>
@@ -25,6 +10,15 @@
       <li id="author">by <%= author %></li>
       <li id="description"><%= description %></li>
     </ul>
+    <div>
+      <form action="/books/<%=id%>" method = "POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete books</button>
+      </form>
+      <form action="/edit/<%=id%>" method = "GET">
+        <button>Update books</button>
+      </form>
+    </div>
   </section>
 </body>
 </html>

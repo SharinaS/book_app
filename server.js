@@ -33,6 +33,7 @@ app.get('/', landingPage);
 app.post('/searches', searchForBook);
 app.get('/search', newSearch);
 app.get('/books/:id', detailView);
+app.get('/edit/:id', editBook);
 app.post('/books/save', saveBook);
 app.get('*', (req, res) => res.render('pages/error', {error: 'Sorry, there was an error'}));
 
@@ -82,19 +83,18 @@ function saveBook(req, res){
 }
 
 function detailView (request, response) {
-  //Dumpster Fire
   client.query('SELECT * FROM books WHERE id = $1', [request.params.id]).then(sqlDetailResult => {
-
     response.render('pages/books/detail', sqlDetailResult.rows[0])
   })
 }
 
+function editBook (request, response) {
+  client.query('SELECT * FROM books WHERE id = $1', [request.params.id]).then(sqlDetailResult => {
+    response.render('pages/books/edit', sqlDetailResult.rows[0])
+  })
+}
+
 function searchForBook(request, response) {
-  // request.body comes from the form from ejs
-  // .search is the name of the input
-  // [0] is the first thing which was the radio buttons
-
-
   const searchType = request.body.search[0];
   const searchingFor = request.body.search[1];
 
@@ -114,12 +114,7 @@ function searchForBook(request, response) {
     result.body.items.forEach( objecty => {
 
       arr.push(new Book(objecty));
-    });
-
-
-    // Send the raw data:
-    //response.send(arr);  
-
+    });  
     // send (the file) and render make HTML render on the page:
     response.render('pages/searches/show', {data: arr});
     
@@ -136,17 +131,3 @@ function handleError(error, response){
 }
 
 app.listen(PORT, () => console.log(`up on PORT ${PORT}`));
-
-
-/* NOTES:
-get - asking for a file? which file. Used just for getting things.
-post - used for sending things to the server, with the intention of storage
-render - takes an ejs file and renders it on the page
-response - is an object that is collecting all the data. Can use the operations send or render to work on that object. 
-response.render always takes in an object as the second argument. 
-Form talks to book-search. Post book-search occurs, which calls the callback function searchForBook. We then make a query for google, and make a superagent request. Front end is still waiting for something to happen. Then, response.render occurs, and we show our global key to the front end.
-short circuit operators like && and || - they stop evaluating further ands and stops at the first falsey thing it finds. Same with 0. It returns the last value, and not true, because the value is truthy or falsey. 
-
-line 71 can accept multiple key value pairs. 
-
-*/
