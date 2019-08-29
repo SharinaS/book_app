@@ -12,9 +12,9 @@ This is a full-stack application that allows a user to search for books through 
 ## Getting Started
 ### If you copy the code down to your machine from my repo on GitHub, after cloning, simply:
 1. Do a touch .env on your terminal to create a file
-2. Within that .env file add PORT:
-    PORT=your_port_number
-    DATABASE_URL=postgres://localhost:5432/books_app (where book_app is the name of the app database)
+2. Within that .env file add:
+* PORT=your_port_number
+* DATABASE_URL=postgres://localhost:5432/books_app (where book_app is the name of the app database)
 3. type npm install (to install all packages needed).
 
 ### If you build from scratch, you will have to install the following packages: 
@@ -22,7 +22,7 @@ This is a full-stack application that allows a user to search for books through 
 2. npm install -S express dotenv
 3. npm install -S superagent (for working with APIs)
 4. npm install -S pg 
-5. npm install -S method-override <-------- for deleting something in HTML 
+5. npm install -S method-override 
 
 ## Database
 ### The schema for the database is as follows;
@@ -113,12 +113,12 @@ Finish time: 9am of the next day
 
 Actual time needed to complete: 6 hours 
 
-### Number and name of feature: feature 1, day 3, Updating details of a book in the database
+### Number and name of feature: feature 1, day 3, Updating details of a book in the database or deleting book
 
 Estimate of time needed to complete: 2 hours 
 
 Start time: 9:30am
 
-Finish time: 
+Finish time: 12pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 3.5 hours
