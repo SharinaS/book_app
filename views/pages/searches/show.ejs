@@ -1,7 +1,9 @@
 <%- include('../../layout/head', {urlPrefix: ""}) %>
 <body>
   <%- include('../../layout/header') %>
+  
   <h1>Search Results</h1>
+  
   <section id="books">
     <ul>
       <% for(var i = 0; i < data.length; i++) { %>
@@ -17,8 +19,9 @@
           <input type="hidden" value= "<%= data[i].image%>" name="image">
           <input type="hidden" value= "<%= data[i].isbn%>" name="isbn">
           <input type="text" name="category" required> category
-          
-          <button>Save</button>
+          <div class="buttons">
+            <button>Save</button>
+          </div>
         </form>
       <% } %>
     </ul>
