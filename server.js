@@ -6,7 +6,6 @@ const pg = require('pg');
 const methodOverride = require('method-override');
 
 const app = express();
-
 app.set('view engine', 'ejs');
 
 // middleware
