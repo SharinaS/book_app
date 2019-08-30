@@ -1,29 +1,23 @@
-#author {
-  font-size: 1.5em;
-  font-style: italic;
-}
-
-nav {
-  box-sizing: border-box;
-  direction: flex;
-  flex-direction: row;
-}
-
-nav > * {
-  width: 50%;
-  border: 1px solid black;
-}
-
 body {
   width: 400px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-#books, #edit {
+nav {
+  display: flex;
+  flex-direction: row;
+  margin: 2em 4em 2em 4em;
+}
+
+nav > * {
+  margin: 1em;
+}
+
+#books, #edit, #new-search{
   background-color: antiquewhite;
   display: flex;
   flex-wrap: wrap;
@@ -32,27 +26,28 @@ body {
   padding: 1em;
 }
 
-
+#new-search > *{
+  padding: 1em;
+  margin: 2em;
+}
 
 .inputForms {
   width: 100%;
   padding: 0.5em;
 }
 
-
-/* #edit {
-  flex-direction: column;
-  height: 100%
-} */
-
-h1 {
-  color: blue;
-}
-
-li{
+li {
   margin: 15px;
 }
 
-#title{
-  font-size: 2em;
+#author {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
 }

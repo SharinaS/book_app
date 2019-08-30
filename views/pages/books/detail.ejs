@@ -2,7 +2,6 @@
 
 <body>
   <%- include('../../layout/header') %>
-  <h1>Details</h1>
   <section id="books">
     <ul>
       <img src= <%= image %> />
@@ -10,13 +9,13 @@
       <li id="author">by <%= author %></li>
       <li id="description"><%= description %></li>
     </ul>
-    <div>
+    <div class="buttons">
+      <form action="/edit/<%=id%>" method = "GET">
+        <button>Update book</button>
+      </form>
       <form action="/books/<%=id%>" method = "POST">
         <input type="hidden" name="_method" value="DELETE">
-        <button>Delete books</button>
-      </form>
-      <form action="/edit/<%=id%>" method = "GET">
-        <button>Update books</button>
+        <button>Delete book</button>
       </form>
     </div>
   </section>

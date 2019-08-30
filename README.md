@@ -23,6 +23,7 @@ This is a full-stack application that allows a user to search for books through 
 3. npm install -S superagent (for working with APIs)
 4. npm install -S pg 
 5. npm install -S method-override 
+6. npm install -S ejs
 
 ## Database
 ### The schema for the database is as follows;
