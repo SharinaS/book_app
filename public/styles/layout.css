@@ -3,9 +3,11 @@
   box-sizing: border-box;
   width: 200px; 
 }
+
 img{
   padding-top: 50px;
 }
+
 @media all and (min-width: 400px) {
   body {
     width: 390px;
