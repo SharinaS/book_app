@@ -27,6 +27,7 @@ This is a full-stack application that allows a user to search for books through 
 
 ## Database
 ### The schema for the database is as follows;
+```
 CREATE TABLE books(
   id SERIAL PRIMARY KEY,
   author VARCHAR(255),
@@ -36,6 +37,7 @@ CREATE TABLE books(
   description VARCHAR(260),
   bookshelf VARCHAR(255)
 );
+```
 
 ### To refresh the database from the terminal:
 Execute from the command line: psql -d books_app -f books.sql
