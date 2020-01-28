@@ -1,13 +1,9 @@
 # book_app 
 ## Overview
-This is a full-stack application that allows a user to search for books through the Google books API, save favorite books, add categories (aka bookshelves) to books, delete books from her/his collection, and select on detailed views about the book they wish to read about. The app is built with PostGreSQL, node.js, JavaScript, EJS, CSS, HTML. It has a repo on GitHub, for version control. 
-
+This is a full-stack JavaScript application that allows a user to search for books through the Google books API, save favorite books, add categories (aka bookshelves) to books, delete books from her/his collection, and select on detailed views about the book they wish to read about. The app is built with PostGreSQL, Node.js, JavaScript, EJS, CSS, HTML. 
 ## Contributors
 * James Dansie
 * Sharina Stubbs
-
-## Website is deployed here:
-
 
 ## Getting Started
 ### If you copy the code down to your machine from my repo on GitHub, after cloning, simply:
@@ -43,7 +39,7 @@ CREATE TABLE books(
 Execute from the command line: psql -d books_app -f books.sql
 
 ## To start server:
-Type into terminal: <nodemon>, then, to restart at any time, enter `rs`
+Type into terminal: `nodemon`, then, to restart at any time, enter `rs`
 
 ## Build Time Data
 ### Number and name of feature: feature 1, early deployment
